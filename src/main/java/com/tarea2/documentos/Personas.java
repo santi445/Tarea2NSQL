@@ -1,58 +1,56 @@
 package com.tarea2.documentos;
 
-import org.springframework.data.annotation.Id;
+
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "Personas")
 public class Personas {
 
-	@Id
-	private int cedula;
-	
-	private String nombre;
-	
-	private String apellido;
-	
-	private int edad;
- 
-	public Personas(int cedula, String nombre, String apellido, int edad) {
-		super();
-		this.cedula = cedula;
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.edad = edad;
-	}
+    private int cedula;
 
-	public int getCedula() {
-		return cedula;
-	}
+    private String nombre;
 
-	public void setCedula(int cedula) {
-		this.cedula = cedula;
-	}
+    private String apellido;
 
-	public String getNombre() {
-		return nombre;
-	}
+    private int edad;
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+    public Personas(int cedula, String nombre, String apellido, int edad) {
+        super();
+        this.cedula = cedula;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.edad = edad;
+    }
 
-	public String getApellido() {
-		return apellido;
-	}
+    public int getCedula() {
+        return cedula;
+    }
 
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
+    public void setCedula(int cedula) {
+        this.cedula = cedula;
+    }
 
-	public int getEdad() {
-		return edad;
-	}
+    public String getNombre() {
+        return nombre;
+    }
 
-	public void setEdad(int edad) {
-		this.edad = edad;
-	}
-	
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
 }

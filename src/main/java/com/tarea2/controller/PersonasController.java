@@ -19,12 +19,18 @@ public class PersonasController {
 	private PersonaRepository personaRepo;
 	
 	@PostMapping
-	public ResponseEntity<?> savePersona(@RequestBody Personas persona){
-		try {
-			Personas personasave = personaRepo.save(persona);
-			return new ResponseEntity<Personas>(personasave, HttpStatus.CREATED);
-		} catch (Exception e) {
-			return new ResponseEntity<String>(e.getCause().toString(),											  HttpStatus.INTERNAL_SERVER_ERROR);
-		}
+	public ResponseEntity<?> savePersona(@RequestBody Personas persona) {
+	    try {
+	        int cedula = persona.getCedula();
+	        Personas existingPersona = personaRepo.findByCedula(cedula);
+	        if (existingPersona != null) {
+	            return new ResponseEntity<String>("La persona ya existe", HttpStatus.UNAUTHORIZED);
+	        }
+	
+	        Personas personasave = personaRepo.save(persona);
+	        return new ResponseEntity<Personas>(personasave, HttpStatus.CREATED);
+	    } catch (Exception e) {
+	        return new ResponseEntity<String>(e.getCause().toString(), HttpStatus.INTERNAL_SERVER_ERROR);
+	    }
 	}
 }
