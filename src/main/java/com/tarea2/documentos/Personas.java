@@ -1,10 +1,12 @@
 package com.tarea2.documentos;
 
 
+import java.io.Serializable;
+
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "Personas")
-public class Personas {
+public class Personas implements Serializable{
 
     private int cedula;
 

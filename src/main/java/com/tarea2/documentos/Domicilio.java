@@ -1,11 +1,14 @@
 package com.tarea2.documentos;
 
+import java.io.Serializable;
+
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "Domicilio")
-public class Domicilio {
+public class Domicilio implements Serializable{
 
-    private int cedula; // CI de la persona a la que está asociado este domicilio.
+	private static final long serialVersionUID = 1L;
+	private int cedula; // CI de la persona a la que está asociado este domicilio.
     private String departamento;
     private String localidad;
     private String calle;
