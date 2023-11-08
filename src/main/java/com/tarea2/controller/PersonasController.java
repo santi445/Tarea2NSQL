@@ -1,5 +1,7 @@
 package com.tarea2.controller;
 
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
@@ -22,18 +24,19 @@ public class PersonasController{
 	private PersonaRepository personaRepo;
 	
 	@PostMapping
-	public ResponseEntity<?> savePersona(@RequestBody Personas persona){
+	@ResponseStatus(HttpStatus.CREATED)
+	public Personas savePersona(@RequestBody Personas persona)throws IOException{
 	    try {
 	        int cedula = persona.getCedula();
 	        Personas existingPersona = personaRepo.findByCedula(cedula);
 	        if (existingPersona != null) {
-	            return new ResponseEntity<String>("La persona ya existe", HttpStatus.UNAUTHORIZED);
+	        	throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "La persona ya existe.");         
 	        }
 	
 	        Personas personasave = personaRepo.save(persona);
-	        return new ResponseEntity<Personas>(personasave, HttpStatus.CREATED);
+	        return personasave;
 	    } catch (Exception e) {
-	        return new ResponseEntity<String>(e.getCause().toString(), HttpStatus.INTERNAL_SERVER_ERROR);
+	    	throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "La persona ya existe.");         
 	    }
 	}
 	

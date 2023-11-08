@@ -54,10 +54,10 @@ public class DomicilioController extends Exception{
     
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Domicilio saveDomicilio(@RequestBody Domicilio domicilio)throws IOException{
+    public Domicilio saveDomicilio(@RequestParam int cedulaPersona, @RequestBody Domicilio domicilio)throws IOException{
         try {
             // Verifica si la persona (por cédula) existe en la base de datos de personas
-            int cedulaPersona = domicilio.getCedula();
+            //int cedulaPersona = domicilio.getCedula();
             Personas existingPersona = personaRepo.findByCedula(cedulaPersona);
             if (existingPersona == null) {
             	throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No existe una persona con la cédula aportada como parámetro");
