@@ -1,0 +1,183 @@
+{
+	"info": {
+		"_postman_id": "9f95e568-b6c1-44d2-9a3e-90c547b22275",
+		"name": "Postman_collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31133496"
+	},
+	"item": [
+		{
+			"name": "Agregar Persona",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('OK',function(){\r",
+							"    pm.response.to.have.status(201)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cedula\": 4857105,\r\n    \"nombre\": \"Carlos\",\r\n    \"apellido\": \"Rodriguez\",\r\n    \"edad\": 20\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/Personas",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Personas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar Domicilio",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('OK',function(){\r",
+							"    pm.response.to.have.status(201)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"departamento\": \"Maldonado\",\r\n    \"barrio\": \"San Carlos\",\r\n    \"calle\": \"Del Core\",\r\n    \"numero:\": 2040\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/Domicilio?cedulaPersona=4857105",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Domicilio"
+					],
+					"query": [
+						{
+							"key": "cedulaPersona",
+							"value": "4857105"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Domicilio",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('OK',function(){\r",
+							"    pm.response.to.have.status(200)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/Domicilio?cedulaPersona=4857105&size=2&page=0&sort=_id,desc",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Domicilio"
+					],
+					"query": [
+						{
+							"key": "cedulaPersona",
+							"value": "4857105"
+						},
+						{
+							"key": "size",
+							"value": "2"
+						},
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "sort",
+							"value": "_id,desc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Domicilio por criterio",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('OK',function(){\r",
+							"    pm.response.to.have.status(200)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/Domicilio/getDomicilio?departamento=Maldonado",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Domicilio",
+						"getDomicilio"
+					],
+					"query": [
+						{
+							"key": "departamento",
+							"value": "Maldonado"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
