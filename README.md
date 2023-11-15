@@ -29,9 +29,28 @@ Se realiza en formato JSON. A continuación, se muestra un ejemplo de la estruct
 - Maven
 - Postman
 - Java
-
+- Redis
+- Docker
+- Jenkins
+- Jmeter
+- NodeJS
+- Newman
+  
 # Instalación
 - Tener instalado MongoDB, Postman, Java JDK 11
 - Contar con una Base de Datos llamada "Tarea2NSQL" junto con las siguientes colecciones "Personas" y "Domicilio"
 - Clonar este repositorio e importar el proyecto en Spring Tool Suite 4
-- Ejecutar el proyecto y utulizar las URL anteriormente mencionadas para su funcionamiento
+- Ejecutar el proyecto y utulizar las URL en anteriormente mencionadas en Postman para su funcionamiento
+
+# Comandos
+Comandos Docker:
+- Dentro del root del proyecto: docker build -t tarea2:1.0 .
+- Dentro de src/main/resources: docker-compose up
+
+Comando para limpiar cache de Redis:
+- En la terminal de redis en docker: redis-cli flushall
+# Puertos Utilizados
+- 8080 Tarea2
+- 27018 MongoDB
+- 6380 Redis
+- 8181 Jenkins
